@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+}
+
+header{
+    padding: 20px 20px
+}
+header img{
+    width: 50px;
+    height: auto;
+    float: left;
+}
+
+button{
+    background-color: rgb(27, 146, 215);
+    border-radius: 5px;
+    color: white;
+    float:right;
+    padding: 10px;
+}
+a{
+    text-decoration: none;
+    margin: 0px;
+}
+
+.container{
+    width: 80%;
+    margin:auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+}
+
+.card > img{
+    width: 100%;
+    height:50%;
+  
+}
+
+.title{
+    color:rgb(117, 114, 114);
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+    margin: 0px;
+}
+
+.desc{
+    padding: 5px 50px 70px 50px;
+    margin: 0px;
+    text-align: center;
+}
+
+.second-part{
+    margin: 0px;
+    background-color: rgb(232, 220, 220);
+}
+
+
+.card1{
+    width: 50%;
+    height: 100vh;
+    margin:auto;
+    margin-top: 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    background-color: rgb(232, 220, 220);
+}
+.header{
+    text-align: center;
+    height: 10%;
+}
+.image-div{
+    height:  70%;
+    width: 100%;
+    display: flex;
+    align-self: center;
+}
+.image-div > img {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    
+}
+.second-part2{
+    padding-top: 2em;
+    height: 40%;
+}
+
+.container1{
+    padding-top: 30px;
+    width: 60%;
+    margin: auto;
+
+}
