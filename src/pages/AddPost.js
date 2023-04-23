@@ -1,60 +1,59 @@
-//import {Link} from 'react-router-dom';
-import {useState} from 'react';
-import { useContext } from 'react';
+import {useState, useContext, useEffect} from 'react';
 import { AppContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 
 export const AddPost=()=>{
-    const {posts,setPosts}=useContext(AppContext);
+    const {posts, setPosts}=useContext(AppContext);
     const [title,setTitle]=useState("");
     const [authorName,setAuthorName]=useState("");
     const [url,setUrl]=useState("");
     const [content,setContent]=useState("");
+    const navigate=useNavigate();
+    
    
-
-    function postBlob(){ 
-        fetch('https://jsonblob.com/api/jsonBlob', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'redirect': 'follow'
-        },
-        body: JSON.stringify({id:"2",title:title,author_name:authorName, image_url:url, content:content})
-        })
-        .then(function(response) {
-        let blobUrl=  response.headers.get('Location'); /* ovdje se nalazi url gdje ti je sacuvan tvoj json */
-       
-        })
-        .catch(function(error){
-            console.log(error);
-        });
+    const addNewPost=()=>{
+  
+        const newPost={
+            "id": posts.length===0 ? 1 : posts[posts.length-1].id+1,
+            "title":title,
+            "image_url":url,
+            "author_name":authorName,
+            "content":content
         }
 
-        
-function putBlob(){ 
-    let url = "https://jsonblob.com/api/1097511134277419008";
-    fetch(url,{
+        console.log(newPost);
+        setPosts([...posts, newPost]);
+        console.log(posts);      
+    }
   
-          method: 'PUT',
-  
-          headers: {
-  
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': 'https:://jsonblob.com',
-              'Access-Control-Allow-Methods': 'POST, PUT, DELETE, HEAD, PATCH, OPTIONS' 
-          },
-          
-  
-          body: JSON.stringify({id:"2",title:title,author_name:authorName, image_url:url, content:content})
 
-      })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error))
-  }
-  // putBlob();
+     
+    function putBlob(){ 
+
+        let url = "https://jsonblob.com/api/1097511134277419008";
+        fetch(url,{
+    
+            method: 'PUT',
+    
+            headers: {
+    
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https:://jsonblob.com',
+                'Access-Control-Allow-Methods': 'POST, PUT, DELETE, HEAD, PATCH, OPTIONS' 
+            },
+            
+    
+            body: JSON.stringify(posts)
+
+        })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error))
+    }
+
+
     return (
         <div className="container1" >
         <form className="ui form">
@@ -75,8 +74,11 @@ function putBlob(){
                 <textarea rows="3" id="content" onChange={(e)=>setContent(e.target.value)} placeholder="content"/>
 
             </div>
-            <button className="ui button" type="submit" onClick={(event)=>{event.preventDefault();
-                        postBlob(); 
+            <button className="ui button" type="submit" onClick={(event)=>{
+                        event.preventDefault();
+                        addNewPost();
+                        putBlob(); 
+                        //navigate('/');
                        }}>Submit</button>
           </form>
         </div>
