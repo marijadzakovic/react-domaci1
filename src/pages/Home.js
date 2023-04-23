@@ -1,6 +1,6 @@
 import'./Home.css';
 import {Link} from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { AppContext } from '../App';
 export const Home=()=>{
   
@@ -9,7 +9,7 @@ export const Home=()=>{
     const fetchData= async ()=> {
         const response=await fetch("https://jsonblob.com/api/1097511134277419008");
         if (!response.ok) {
-            throw new Error('Data coud not be fetched!')
+            throw new Error('Data could not be fetched!')
         } else {
             return response.json()
         }
@@ -17,37 +17,18 @@ export const Home=()=>{
     }
     useEffect(() => {
         fetchData()
-          .then((data) => setPosts(data))
+          .then((data) => {setPosts(data)})
           .catch((e) => {
-            console.log(e.message)
+            console.log(e.message);
           })
       }, [])
-/*
-    const generateLinks = () => {
-        console.log(posts);
-        if(posts.length!==0){
-            console.log("Uslo se u ovaj dio");
-        posts.map((post)=> {
-           return ( 
-            <Link key={post.id} to={`/single-post/${post.id}`}>
-            <div className="card">
-                <img src={post.image_url} />
-                <div className="second-part">
-                    <p className="title">{post.title}</p>
-                    <p className="desc">{post.content}</p>
-                </div>
-            </div>
-            </Link>
-           );
-    });
-    }
-    }
-    */
+
+
     return (
         <div>
             <header>
                <Link to="/"><img src={require('./blog.png')} alt="logo"></img></Link> 
-               <button><Link to="/add-post">Dodaj post </Link></button>
+               <Link to="/add-post"><button>Dodaj post </button></Link>
             </header>
                <div className="container">
                {posts.map((post, idx)=> {
@@ -57,13 +38,13 @@ export const Home=()=>{
                         <img src={post.image_url} />
                         <div className="second-part">
                             <p className="title">{post.title}</p>
-                            <p className="desc">{post.content}</p>
+                            <p className="desc">{post.author_name}</p>
                         </div>
                     </div>
                     </Link>
                 );
                })
-               }
+            }
                 
                </div>
         </div>
