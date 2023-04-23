@@ -4,8 +4,8 @@ import { AppContext } from '../App';
 import'./Home.css';
 
 export const OnePost = () => {
-    const {posts,setPosts}=useContext(AppContext);
-    const [id,setId]=useState("");
+    const {posts}=useContext(AppContext);
+    const [id,setId]=useState(0);
     const params=useParams();
 
     useEffect(()=>{
@@ -15,7 +15,7 @@ export const OnePost = () => {
     return (
         <div>
             {posts.map((post)=>{
-                if(post.id===id){
+                if(post.id==id){
                     return(
                         <div className="card1">
                         <div className="header">
@@ -24,7 +24,7 @@ export const OnePost = () => {
                         <div className="image-div">
                         <img src={post.image_url} alt={post.title}/>
                         </div>
-                        <div className="second-part second-part2">
+                        <div className="second-part2">
                             <p className="title">Author: {post.author_name}</p>
                             <p className="desc">{post.content}
                             </p>
