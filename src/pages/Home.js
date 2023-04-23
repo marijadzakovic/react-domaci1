@@ -21,7 +21,7 @@ export const Home=()=>{
           .catch((e) => {
             console.log(e.message);
           })
-      }, [])
+      }, [setPosts])
 
 
     return (
@@ -35,7 +35,7 @@ export const Home=()=>{
                 return ( 
                     <Link key={post.id} to={`/single-post/${post.id}`}>
                     <div className="card">
-                        <img src={post.image_url} />
+                        <img src={post.image_url} alt=""/>
                         <div className="second-part">
                             <p className="title">{post.title}</p>
                             <p className="desc">{post.author_name}</p>

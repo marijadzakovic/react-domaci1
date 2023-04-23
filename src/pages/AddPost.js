@@ -1,6 +1,6 @@
-import {useState, useContext, useEffect} from 'react';
+import {useState, useContext} from 'react';
 import { AppContext } from '../App';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 
@@ -10,7 +10,7 @@ export const AddPost=()=>{
     const [authorName,setAuthorName]=useState("");
     const [url,setUrl]=useState("");
     const [content,setContent]=useState("");
-    const navigate=useNavigate();
+ //   const navigate=useNavigate();
     
    
     const addNewPost=()=>{
