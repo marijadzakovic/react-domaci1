@@ -3,7 +3,8 @@
 }
 
 header{
-    padding: 20px 20px
+    margin: 20px;
+    height: 80px;
 }
 header img{
     width: 50px;
@@ -13,6 +14,7 @@ header img{
 
 button{
     background-color: rgb(27, 146, 215);
+    border: 0px;
     border-radius: 5px;
     color: white;
     float:right;
@@ -20,6 +22,7 @@ button{
 }
 a{
     text-decoration: none;
+    color: antiquewhite;
     margin: 0px;
 }
 
@@ -31,11 +34,15 @@ a{
     grid-column-gap: 30px;
     grid-row-gap: 20px;
 }
+.card {
+    height:400px;
+}
 
 .card > img{
     width: 100%;
     height:50%;
-  
+    object-fit: cover;
+ 
 }
 
 .title{
@@ -47,13 +54,14 @@ a{
 }
 
 .desc{
+    color:black;
     padding: 5px 50px 70px 50px;
     margin: 0px;
     text-align: center;
 }
 
 .second-part{
-    margin: 0px;
+ 
     background-color: rgb(232, 220, 220);
 }
 
@@ -63,13 +71,14 @@ a{
     height: 100vh;
     margin:auto;
     margin-top: 20px;
-    border: 1px solid grey;
+    border: 1px solid rgb(145, 142, 142);
     border-radius: 10px;
     display:flex;
     flex-direction: column;
     background-color: rgb(232, 220, 220);
 }
 .header{
+    padding: 10px;
     text-align: center;
     height: 10%;
 }
@@ -83,7 +92,7 @@ a{
     width: 80%;
     height: 100%;
     margin: auto;
-    
+    object-fit: contain;
 }
 .second-part2{
     padding-top: 2em;
